@@ -32,7 +32,7 @@ tfidf = TfidfVectorizer(stop_words='english')
 #metadata['overview'] = metadata['overview'].fillna('')
 
 #Construct the required TF-IDF matrix by fitting and transforming the data
-tfidf_matrix = tfidf.fit_transform(df["Description"])
+tfidf_matrix = tfidf.fit_transform(df["Genre"])
 
 t2 = time.time()
 #print(t2 - t1)
