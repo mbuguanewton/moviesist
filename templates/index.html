@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Moviesist</title> 
+</head>
+<body>
+<!-- stylesheet -->
+    <style type="text/css">
+        html {
+            font-family: 'Muli', San Serif;
+            font-size: 14px;
+        }
+        nav {
+            color: white;
+            opacity: 0.8;
+        }
+        .parallax-container {
+            height: 100vh;
+        }
+        .parallax img {
+            background-position: center;
+            background-size: auto;
+            background-attachment: fixed;
+        }
+        .content {
+            z-index: 3;
+            position: relative;
+            margin-top: -25rem;
+            padding:2rem 2rem;
+        }
+        .footer {
+            margin-top:5rem;
+            position: relative;
+            z-index: 0;
+        }
+    </style>
+<!-- Top Navbar -->
+    <div class="container-fluid">
+        <div class="parallax-container">
+            <nav class="white">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="{{url_for('home')}}" class="brand-logo black-text text-darken-2 left">Moviesist</a>
+                    <ul id="nav-mobile" class="right black-text text-darken-2">
+                        <li><a href="#">Sass</a></li>
+                        <li><a href="#">Components</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            </nav>
+           <div class="parallax"><img src="{{url_for('static', filename='avengers_infinity_war_4k_8k-2560x1440 (1).jpg')}}">
+
+           </div> 
+        </div>
+
+    </div>
+
+    <!-- main content area -->
+    <div class="container">
+        <div class="card content">
+        <h5 class="center">Movie recommendations</h5>
+        <form action="/search" method = 'POST'>
+            <nav>
+            <div class="nav-wrapper white input-bar">
+              <form>
+                <div class="input-field">
+                  <input id="search" name="text" type="search" placeholder="search movies..." required>
+                  <label class="label-icon" for="search"><i  class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+            </nav>
+        </form>
+
+        {% for i in movies %}
+        <div class="card blue darken-1 white-text">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 m6">
+                    <h5>Title : {{i[0]}}</h5>
+                    <p>Genre  : {{i[1]}}</p>
+                </div>
+
+                <div class="col s12 m6">
+                    <strong><h6 class="right">Rating : {{i[2]}}</h6></strong>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.parallax').parallax();
+      });
+    </script>
+</body>
+</html>
