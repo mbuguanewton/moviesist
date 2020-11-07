@@ -18,7 +18,6 @@ df = result[useful]
 #print(df.shape)
 df= df.fillna('')
 
-
 #Import TfIdfVectorizer from scikit-learn
 from sklearn.feature_extraction.text import TfidfVectorizer
 import time
